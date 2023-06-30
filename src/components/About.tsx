@@ -5,51 +5,55 @@ interface FeatureData {
   featureContent: string;
 }
 
-const featureData: FeatureData = {
+const featureData: FeatureData[] = [{
   title: "Interactive features",
   featureContent:
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
-};
+},
+{
+  title: "Interactive features",
+  featureContent:
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+}
+];
+
+const FeatureCard: React.FC<FeatureData> = ({ title, featureContent }) => {
+  return (
+    <div className="inline-flex h-auto w-auto p-[30px] flex-col items-start rounded-md border border-purple-700 gap-[15px]">
+      <h2 className="text-base font-poppins font-bold">
+        {title}
+      </h2>
+      <p className="text-xs font-poppins font-normal">
+        {featureContent}
+      </p>
+    </div>
+  )
+}
+
+
 
 const About: React.FC = () => {
   return (
     <div className="flex px-[175px]">
       <div className="flex w-[1439px] h-[525px] gap-6 mt-10">
         <div className="flex flex-col pt-[49px] gap-5 pb-[127px]">
-          <div className="inline-flex h-auto w-auto p-[30px] flex-col items-start rounded-md border border-purple-700 gap-[15px]">
-            <h2 className="text-base font-poppins font-bold">
-              {featureData.title}
-            </h2>
-            <p className="text-xs font-poppins font-normal">
-              {featureData.featureContent}
-            </p>
-          </div>
-          <div className="inline-flex h-auto w-auto p-[30px] flex-col items-start gap-[15px] rounded-md border border-purple-700">
-            <h2 className="text-base font-poppins font-bold">
-              {featureData.title}
-            </h2>
-            <p className="text-xs font-poppins font-normal">
-              {featureData.featureContent}
-            </p>
-          </div>
+          {
+            featureData.map((item) => {
+              return (
+                <FeatureCard title={item.title} featureContent={item.featureContent} />
+              )
+            })
+          }
+
         </div>
         <div className="flex flex-col pt-[72px] gap-5 pb-[79px]">
-          <div className="inline-flex h-auto w-auto p-[30px] flex-col items-start gap-[15px] rounded-md border border-purple-700">
-            <h2 className="text-base font-poppins font-bold">
-              {featureData.title}
-            </h2>
-            <p className="text-xs font-poppins font-normal">
-              {featureData.featureContent}
-            </p>
-          </div>
-          <div className="inline-flex h-auto w-auto p-[30px] flex-col items-start gap-[15px] rounded-md border border-purple-700">
-            <h2 className="text-base font-poppins font-bold">
-              {featureData.title}
-            </h2>
-            <p className="text-xs font-poppins font-normal">
-              {featureData.featureContent}
-            </p>
-          </div>
+          {
+            featureData.map((item) => {
+              return (
+                <FeatureCard title={item.title} featureContent={item.featureContent} />
+              )
+            })
+          }
         </div>
       </div>
       <div className="w-auto h-auto inline-flex flex-col items-start gap-[48px] mt-[125px] ml-[120px]">
